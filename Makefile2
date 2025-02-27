@@ -1,0 +1,58 @@
+# Compiler and Flags
+CC = gcc
+CFLAGS = -Wall
+CPPFLAGS = -I Include			# Include directory for header files
+LDFLAGS =				# Linker flags, if any
+ 
+# Debug or Release configuration
+DEBUG = 1
+ 
+# Directories
+INCLUDE_DIR = Include
+SOURCE_DIR = src
+BUILD_DIR = build
+ 
+# Source and Object files
+C_SOURCES = $(wildcard $(SOURCE_DIR)/*.c)
+C_OBJECTS = $(patsubst $(SOURCE_DIR)/%.c, $(BUILD_DIR)/%.o, $(C_SOURCES))
+ 
+# Executable name (debug or release)
+ifeq ($(DEBUG), 1)
+	CFLAGS += -g -O0
+	
+EXECUTABLE_NAME = main
+endif
+ 
+# Compiler call
+CC_CALL = $(CC) $(CFLAGS) $(CPPFLAGS)
+ 
+# Targets
+all: build gdb
+ 
+# Create build directory
+create:
+	@mkdir -p $(BUILD_DIR)
+ 
+# Build the executable
+build: create $(C_OBJECTS)
+	$(CC_CALL) $(C_OBJECTS) $(LDFLAGS) -o $(BUILD_DIR)/$(EXECUTABLE_NAME)
+ 
+# Run GDB on the program (launch GDB)
+gdb:
+	@echo "Running GDB..."
+	gdb ./$(BUILD_DIR)/$(EXECUTABLE_NAME)
+ 
+# Run the program
+execute:
+	./$(BUILD_DIR)/$(EXECUTABLE_NAME)
+ 
+# Clean up build files
+clean:
+	rm -rf $(BUILD_DIR)/*
+ 
+# Compile each .c file into an object (.o) file
+$(BUILD_DIR)/%.o: $(SOURCE_DIR)/%.c
+	$(CC_CALL) -c $< -o $@
+ 
+# Phony targets (these are not actual files, but just labels for make)
+.PHONY: all create build execute clean

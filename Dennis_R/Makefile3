@@ -1,0 +1,43 @@
+CC = gcc
+CFLAGS = -w
+LDFLAGS = -lm  # Ensure this is defined
+
+DEBUG = 1
+
+CHAPTERS = PROGRAM
+
+ifeq ($(DEBUG), 1)
+    CFLAGS += -g -O0
+    EXECUTABLE_NAME = main_binary_file
+endif
+
+.PHONY: all $(CHAPTERS) build compile execute clean
+
+all: $(CHAPTERS)
+
+$(CHAPTERS):
+	@echo "Building $(CHAPTERS)..."
+	@$(MAKE) build CHAPTER=$@
+	@$(MAKE) execute CHAPTER=$@
+
+build:
+	@mkdir -p $(CHAPTER)/build
+	@mkdir -p $(CHAPTER)/execute
+	@$(MAKE) compile CHAPTER=$(CHAPTER)
+	@echo "Compiling..."
+	@$(CC) $(CFLAGS) -I $(CHAPTER)/header $(CHAPTER)/build/*.o -o $(CHAPTER)/execute/$(EXECUTABLE_NAME) $(LDFLAGS)
+
+compile:
+	@mkdir -p $(CHAPTER)/build
+	@for src in $(wildcard $(CHAPTER)/function/*.c); do \
+		$(CC) $(CFLAGS) -I $(CHAPTER)/header -c $$src -o $(CHAPTER)/build/$$(basename $$src .c).o; \
+	done
+	@$(CC) $(CFLAGS) -I $(CHAPTER)/header -c $(CHAPTER)/main/main.c -o $(CHAPTER)/build/main.o
+
+execute:
+	@echo "Running $(CHAPTER)/execute/$(EXECUTABLE_NAME)..."
+	@./$(CHAPTER)/execute/$(EXECUTABLE_NAME)
+
+clean:
+	@rm -rf $(CHAPTERS:%=%/build/*) $(CHAPTERS:%=%/execute/*)
+

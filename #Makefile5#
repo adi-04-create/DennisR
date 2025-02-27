@@ -1,0 +1,43 @@
+i# Compiler and flags
+CC = gcc
+CFLAGS = -I$(INCLUDE_DIR) -Wall
+ 
+# Module Details
+module = 1
+# module = 2
+# module = 3
+
+
+ 
+# Directories
+MODULE_DIR = 166973_Parv_DennisR_Module$(module)_T005
+SRC_DIR = $(MODULE_DIR)/src
+BIN_DIR = $(MODULE_DIR)/bin
+BUILD_DIR = $(MODULE_DIR)/build
+INCLUDE_DIR = $(MODULE_DIR)/include
+ 
+# Source files
+SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC_FILES))
+ 
+# Main executable
+MAIN_EXEC = $(BIN_DIR)/main
+ 
+# Default target: Compile and link everything
+all: $(BIN_DIR) $(BUILD_DIR) $(MAIN_EXEC)
+ 
+# Create directories if they don't exist
+$(BIN_DIR) $(BUILD_DIR):
+	mkdir -p $@
+ 
+# Compile each .c file into an object file inside build directory
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+ 
+# Compile main.c separately and link all object files into bin/main
+$(MAIN_EXEC): $(MODULE_DIR)/main.c $(OBJ_FILES)
+	$(CC) $(CFLAGS) $(MODULE_DIR)/main.c $(OBJ_FILES) -o $(MAIN_EXEC)
+ 
+# Clean up compiled executables and object files
+clean:
+	rm -rf $(BIN_DIR) $(BUILD_DIR)

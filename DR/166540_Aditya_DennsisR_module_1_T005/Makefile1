@@ -1,0 +1,32 @@
+target: build execute clean
+DEBUG = 0
+EXECUTABLE_NAME = main
+CC = gcc
+CFLAGS = -Wall -Iinclude
+ 
+ifeq ($(DEBUG), 1)
+	CFLAGS += -g -O0
+else
+	CFLAGS += -O3
+endif
+ 
+COMPILER_CALL = $(CC) $(CFLAGS)
+ 
+SRC_FILES = 166540_Aditya_DennsisR_module_01_T005/166540_Aditya_DennisR_Module1_T005_17.c \
+		src_functions/copyMultiLine.c \
+		src_functions/getLineCopyLine.c
+ 
+OBJ_FILES = $(SRC_FILES:.c=.o)
+ 
+build: $(OBJ_FILES)
+	$(COMPILER_CALL) $(OBJ_FILES) -o $(EXECUTABLE_NAME)
+ 
+%.o : %.c
+	$(COMPILER_CALL) -c $< -o $@
+ 
+execute:
+	./$(EXECUTABLE_NAME)
+ 
+clean:
+	rm -f $(OBJ_FILES)
+	rm -f $(EXECUTABLE_NAME)

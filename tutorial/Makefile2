@@ -1,0 +1,27 @@
+target:	build execute clean
+DEBUG = 0
+EXECUTABLE_NAME = main
+CC = gcc
+CFLAGS = -Wall
+LDFLAGS =
+
+ifeq ($(DEBUG),0)
+CFLAGS += -g -O0
+endif
+
+COMPILER_CALL = $(CC) $(CFLAGS)
+
+build:	bitwise.o
+	@$(COMPILER_CALL) bitwise.o -o $(EXECUTABLE_NAME)
+#calc.o:
+	#$(COMPILER_CALL) -c calc.c
+#main.o:
+	#$(COMPILER_CALL) -c main.c
+execute:
+	@./$(EXECUTABLE_NAME)
+clean:
+	@rm -f *.o
+	@rm -f $(EXECUTABLE_NAME)
+
+%.o: %.c
+	@$(COMPILER_CALL) -c $< -o $@
