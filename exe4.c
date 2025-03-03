@@ -12,6 +12,9 @@ modified:26 dec,2024
 /* start of main function */
 int main(){
 
+	printf("Hello World\n");
+	printf("Hello World\n");
+
 	printf("Celsius to Fahrenheit table\n");
 	printf("\nCelsius Fahrenheit\n");// to print header of Fahrenheit-Celsius Table
 	celsiustofahrenheit();
