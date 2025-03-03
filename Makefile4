@@ -1,0 +1,55 @@
+target: build execute clean
+# Variables
+NO = 1
+#NO = 2
+#NO = 3
+#NO = 4
+DEBUG = 1
+#EXECUTABLE_NAME = 166698_Uday_Dennis_Ritchie_T005_Module_$(NO)/bin/main
+EXECUTABLE_NAME = main
+CC = gcc
+CFLAGS = -Wall -I include
+#SRC_DIR = 166698_Uday_Dennis_Ritchie_T005_Module_$(NO)/src
+#OBJ_DIR = 166698_Uday_Dennis_Ritchie_T005_Module_$(NO)/build
+
+SRC_DIR = src
+OBJ_DIR = build
+
+ifeq ($(DEBUG), 1)
+    CFLAGS += -g -O0
+else
+    CFLAGS += -O3
+endif
+ 
+COMPILER_CALL = $(CC) $(CFLAGS)
+ 
+# Source and object files
+#SRC_FILES = 166698_Uday_Dennis_Ritchie_T005_Module_$(NO)/main.c \
+		$(wildcard $(SRC_DIR)/*.c)
+SRC_FILES = main.c \
+                $(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES = $(patsubst %.c, $(OBJ_DIR)/%.o, $(notdir $(SRC_FILES)))
+ 
+# Create necessary directories
+$(shell mkdir -p $(OBJ_DIR))
+ 
+# Targets
+build: $(OBJ_FILES)
+	@$(COMPILER_CALL) $(OBJ_FILES) -o $(EXECUTABLE_NAME)
+ 
+# Rule for object file generation
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(COMPILER_CALL) -c $< -o $@
+ 
+#$(OBJ_DIR)/main.o: 166698_Uday_Dennis_Ritchie_T005_Module_$(NO)/main.c
+$(OBJ_DIR)/main.o: main.c
+	@$(COMPILER_CALL) -c $< -o $@
+ 
+execute:
+	@./$(EXECUTABLE_NAME)
+ 
+clean:
+	@rm -f $(OBJ_DIR)/*.o
+	@rm -f $(EXECUTABLE_NAME)
+ 
+#target: build execute clean

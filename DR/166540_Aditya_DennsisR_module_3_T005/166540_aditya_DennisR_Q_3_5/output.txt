@@ -1,0 +1,6 @@
+Makefile
+Q3_5_F.c
+Q3_5_main.c
+Q3_5_test.c
+header.h
+output.txt

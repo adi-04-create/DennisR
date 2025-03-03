@@ -1,0 +1,45 @@
+target: build execute clean
+
+EXE_NAME = executable
+CC = gcc
+CCFLAGS = -Wall -I Include
+CC_CALL = $(CC) $(CCFLAGS)
+
+
+EXAMPLE = 5
+MAIN = main.c
+BUILD = src/build/
+BIN = src/bin/
+BINFILE = binfile_$(EXAMPLE)
+#FUNCTION = src/func_1_$(EXAMPLE).c
+FUNCTION = src
+
+C_SOURCES = $(wildcard $(FUNCTION)/*.c)
+C_OBJECTS = $(patsubst $(FUNCTION)/%.c, $(BUILD)/%.o, $(C_SOURCES))
+
+MAIN_O = main.o
+FUNCTION_O = func_1_$(EXAMPLE).o
+
+build: $(MAIN_O) $(FUNCTION_O) objfile
+	$(CC_CALL) $(MAIN_O) $(FUNCTION_O) -o $(EXE_NAME)
+
+$(MAIN_O):
+	$(CC_CALL) -w -c $(MAIN)
+
+$(FUNCTION_O):
+	$(CC_CALL) -w -c $(FUNCTION)
+
+objfile:
+	cp $(FUNCTION_O) $(BUILD)
+
+binfile:
+	cp $(EXE_NAME) $(BINFILE)
+	mv $(BINFILE) $(BIN)
+
+execute: binfile
+	./$(EXE_NAME)
+
+clean:
+	rm -f *.o
+	rm -f $(EXE_NAME)
+
