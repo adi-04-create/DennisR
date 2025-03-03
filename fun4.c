@@ -5,8 +5,8 @@
 void celsiustofahrenheit(){
 
         float fahr, celsius;
-        float lower, upper, step;
-
+	float lower, upper, step;
+	printf("Hello World");
         lower = 0; // lower limit of temperatuire scale
         upper = 300; // upper limit
         step = 20; // step size
