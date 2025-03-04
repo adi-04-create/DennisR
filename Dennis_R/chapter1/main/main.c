@@ -76,7 +76,11 @@ uint32_t main()
 
 	/* func_1_16.c*/
 	/* prints the length of arbitary long input lines */
+<<<<<<< HEAD
 	length();
+=======
+	//length();
+>>>>>>> origin/master
 
 
 	/* func_1_19.c*/

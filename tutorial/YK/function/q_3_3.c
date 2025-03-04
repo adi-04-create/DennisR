@@ -18,11 +18,28 @@ int main()
 {
 	char *names[] = {"Santosh","Amol","Santosh Jain","Kishore","Rahul","Amolkumar","Hemant"};
 	//char **ptr = names;
+<<<<<<< HEAD
 	printf("%s\n",*names);
 	*names+=55;
 	printf("%s\n",*names);
 
 	//printf("%s\n",*ptr);
+=======
+/*	printf("%s\n",*names);
+	++*names;
+	printf("%s\n",*names);
+*/
+
+	
+//	char (*p)[13] = names;
+	for ( int i=0;i<7;i++ )
+	{
+		for ( int j=0;names[i][j]!='\0';j++ ) {
+	//	printf("%c\n",*(*(p + i) + j));
+			printf("%c\n",names[i][j]);
+		}
+	}
+>>>>>>> origin/master
 	printf("%ld\n",sizeof(names));
 	return 0;
 }

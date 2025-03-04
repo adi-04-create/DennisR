@@ -30,6 +30,11 @@ char *xstrstr( char *string1, char *string2 )
 		offset++;
 		if ( *string1 == *string2 )
 		{
+<<<<<<< HEAD
+=======
+			/* until the string matches we will store the matched 
+			 * characters in another array called op_arr */
+>>>>>>> origin/master
 			op_arr[index1++] = offset;
 			arr[index++] = *string1;
 			string1++;

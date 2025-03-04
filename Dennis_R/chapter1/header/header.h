@@ -1,6 +1,10 @@
 #ifndef _HEADER_
 #define _HEADER_
+<<<<<<< HEAD
 
+=======
+#include <stdint.h>
+>>>>>>> origin/master
 void fahrenheittocelsius();		/* func_1_3.c */
 void celsiustofahrenheit();		/* func_1_4.c */
 void celsiustofahrenheitrev();		/* func_1_5.c */

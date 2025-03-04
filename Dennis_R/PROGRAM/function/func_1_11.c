@@ -7,7 +7,11 @@ modified:30 dec 2024
 
 /* reqired header files */
 #include <stdio.h>
+<<<<<<< HEAD
 #include"header.h"
+=======
+#include "header.h"
+>>>>>>> origin/master
 #define IN 1 /* inside a word */
 #define OUT 0 /* outside a word */
 
@@ -21,6 +25,10 @@ void  wordcounting()
 
 	 /* initialising variables */
 	 iNline=iNword=iNchar= 0;
+<<<<<<< HEAD
+=======
+	 char bu1 = getchar();
+>>>>>>> origin/master
 	 while ((iChar = getchar()) != EOF)
 	 {
 	 	++iNchar;
