@@ -57,13 +57,13 @@ int main(int argc, char *argv[])
 
 	if ((nlines = readlines(lineptr, MAXLINES)) >= 0)
 	{
-		int (*comp)(void *, void *) = (int (*)(void *, void *))(numeric ? numcmp : (int (*)(void *, void *))strcmp);
+		/*int (*comp)(void *, void *) = (int (*)(void *, void *))(numeric ? numcmp : (int (*)(void *, void *))strcmp);
 
 		if (reverse) {
 			original_comp = comp;
 			comp = reverse_wrapper;
-		}
-	/*	int (*comp)(void *, void *);
+		}*/
+		int (*comp)(void *, void *);
 		if (numeric)
     			comp = numcmp;
 		else if (fold)
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 		if (reverse) {
     			original_comp = comp;
     			comp = reverse_wrapper;
-		}*/
+		}
 
 
 		quick_sort((void **)lineptr, 0, nlines - 1, comp);

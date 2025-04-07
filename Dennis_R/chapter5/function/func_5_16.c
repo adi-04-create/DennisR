@@ -5,6 +5,8 @@
 
 #define MAXLINES 50  /* max #lines to be sorted */
 #define MAXLEN 100    /* max length of any input line */
+int fold = 0;   // for -f
+int directory = 0; // for -d
 
 char *lineptr[MAXLINES]; /* pointers to text lines */
 
@@ -21,11 +23,44 @@ int (*original_comp)(void *, void *);
 int reverse_wrapper(void *a, void *b) {
 	return -original_comp(a, b);
 }
+
+int isdirchar(int c) {
+    return isalnum(c) || isspace(c);
+}
+
 int numcmp(void *s1, void *s2) {
 	double v1 = atof((char *)s1);
 	double v2 = atof((char *)s2);
 	return (v1 > v2) - (v1 < v2); // More compact comparison
 }
+
+int dircmp(void *s1, void *s2) {
+    char *a = (char *)s1;
+    char *b = (char *)s2;
+
+    while (*a != '\0' || *b != '\0') {
+        // Skip non-directory-order characters
+        while (*a && !isdirchar(*a)) a++;
+        while (*b && !isdirchar(*b)) b++;
+
+        char ca = *a;
+        char cb = *b;
+
+        // Apply case folding if -f is on
+        if (fold) {
+            ca = tolower(ca);
+            cb = tolower(cb);
+        }
+
+        if (ca != cb)
+            return ca - cb;
+
+        if (*a) a++;
+        if (*b) b++;
+    }
+    return 0;
+}
+
 
 int foldcmp(void *s1, void *s2) {
     	char *a = (char *)s1;
@@ -43,7 +78,7 @@ int main(int argc, char *argv[])
 	int nlines;      				/* number of input lines read */
 	int numeric = 0; 				/* 1 if numeric sort */
 	int reverse = 0; 				/* 1 if reverse sort */
-	int fold = 0;  					/* 1 if folding upper and lower case */
+/*	int fold = 0;  */					/* 1 if folding upper and lower case */
 	/* Process command-line arguments */
 	for (int i = 1; i < argc; i++) {
 		if (strcmp(argv[i], "-n") == 0)
@@ -52,29 +87,46 @@ int main(int argc, char *argv[])
 			reverse = 1;
 		else if (strcmp(argv[i], "-f") == 0)
     			fold = 1;
+		else if (strcmp(argv[i], "-d") == 0)
+    			directory = 1;
+
 
 	}
 
 	if ((nlines = readlines(lineptr, MAXLINES)) >= 0)
 	{
-		int (*comp)(void *, void *) = (int (*)(void *, void *))(numeric ? numcmp : (int (*)(void *, void *))strcmp);
+		/*int (*comp)(void *, void *) = (int (*)(void *, void *))(numeric ? numcmp : (int (*)(void *, void *))strcmp);
 
 		if (reverse) {
 			original_comp = comp;
 			comp = reverse_wrapper;
-		}
-	/*	int (*comp)(void *, void *);
+		}*/
+		/*int (*comp)(void *, void *);
 		if (numeric)
     			comp = numcmp;
 		else if (fold)
     			comp = foldcmp;
 		else
+    			comp = (int (*)(void *, void *))strcmp;*/
+		int (*comp)(void *, void *);
+		if (numeric) {
+    			comp = numcmp;
+		} 
+		else if (directory) {
+    			comp = dircmp;
+		} 
+		else if (fold) {
+    			comp = foldcmp;
+		} 
+		else {
     			comp = (int (*)(void *, void *))strcmp;
+		}
+
 
 		if (reverse) {
     			original_comp = comp;
     			comp = reverse_wrapper;
-		}*/
+		}
 
 
 		quick_sort((void **)lineptr, 0, nlines - 1, comp);
