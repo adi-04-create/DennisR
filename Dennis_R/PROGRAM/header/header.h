@@ -1,7 +1,7 @@
 #ifndef _HEADER_
 #define _HEADER_
 #include <stdint.h>
-
+#include <stddef.h>
 void fahrenheittocelsius();		/* func_1_3.c */
 void celsiustofahrenheit();		/* func_1_4.c */
 void celsiustofahrenheitrev();		/* func_1_5.c */
@@ -42,12 +42,6 @@ void field_modified();			/* func_3_6.c */
 void strindex();			/* func_4_1.c */
 void expression();			/* func_4_2.c */
 void stack_operation2();		/* func_4_4.c | func_4_3.c | func_4_5.c */
-<<<<<<< HEAD
-void unget_string();			/* func_4_7.c */
-void modified_version();		/* func_4_8.c */
-void reverse_func();			/* func_4_13.c*/
-void swapping();			/* func_4_14.c*/
-=======
 void ExecuteCalculator();		/* func_4_6.c */
 void unget_string();			/* func_4_7.c */
 void modified_version();		/* func_4_8.c */
@@ -58,5 +52,4 @@ void ExecuteItoa();			/* func_4_12.c*/
 void reverse_func();			/* func_4_13.c*/
 void swapping();			/* func_4_14.c*/
 
->>>>>>> origin/master
 #endif

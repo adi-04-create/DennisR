@@ -19,14 +19,14 @@ void setbit()
         char input[32];
 
 	char buff = getchar();
-        printf("Enter the value of first binary string :");
+        printf("Enter the value of first binary string   : ");
         fgets(input,32,stdin);
 
         /* converting binary string to decimal number */
         input1 = strtoul(input,NULL,2);
 
-	char buff2 = getchar();
-        printf("Enter the value of second binary string:");
+//	char buff2 = getchar();
+        printf("Enter the value of second binary string  : ");
         fgets(input,32,stdin);
 
         /* converting binary string to decimal number */

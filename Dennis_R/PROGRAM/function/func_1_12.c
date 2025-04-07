@@ -17,11 +17,7 @@ void newline()
 	printf("	Prints the input one word per line.\n\n");
 	uint32_t c, state;
 	state = OUT;
-<<<<<<< HEAD
-	
-=======
 	char a = getchar();	
->>>>>>> origin/master
 	while ((c = getchar()) != EOF)
 	{
         	if (c == ' ' || c == '	' || c == '\n') 

@@ -1,6 +1,7 @@
 
 /* REQUIRED HEADER FILES */
 #include <stdio.h>
+#include <stdint.h>
 #define MAXLINE 100
 
 /* START OF FUNCTION */

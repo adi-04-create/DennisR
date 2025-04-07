@@ -60,6 +60,7 @@ uint32_t mgetline(char s[], uint32_t lim) {
     uint32_t i = 0;
     int c;
 
+    char buff = getchar();
     while (i < lim - 1 && (c = getchar()) !=  EOF) {
         s[i++] = c;
     }

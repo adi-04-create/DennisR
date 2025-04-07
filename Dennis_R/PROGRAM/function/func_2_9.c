@@ -17,8 +17,9 @@ uint32_t bitcount(uint32_t x){
 void count(){
 
         char i[100];
-        uint32_t input;
-        fgets(i,100,stdin);
+       	uint32_t input;
+        char buff = getchar();
+	fgets(i,100,stdin);
         input=strtoul(i,NULL,2);
 
         bitcount(input);

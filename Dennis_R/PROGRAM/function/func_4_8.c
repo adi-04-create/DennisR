@@ -1,12 +1,10 @@
-<<<<<<< HEAD
-=======
+
 /* Exercise 4-8. Suppose that there will never be more than one character of pushback. Modify * getch and ungetch accordingly.
  * Author  : Aditya Nathwani
  * Created : 1 March, 2025
  */
 
 /* required header files */
->>>>>>> origin/master
 #include <stdio.h>
 
 /* holds the single pushback character, -1 means empty */

@@ -66,9 +66,10 @@ uint32_t main()
 	//
 //	array_search();
 //	char_catch();
-//	expansion();
+	expansion();
 //	returnval();
-	conversion();
+//	conversion();
+//	field_modified();
 	return 0;
 }
 /* end of main program */

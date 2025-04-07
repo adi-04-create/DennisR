@@ -42,7 +42,8 @@ void bit_invert()
 
         char input[32];
 
-        printf("enter the value of first binary string:");
+	char buff = getchar();
+        printf("enter the value of first binary string   : ");
         fgets(input,32,stdin);
         input1 = strtoul(input,NULL,2);
 

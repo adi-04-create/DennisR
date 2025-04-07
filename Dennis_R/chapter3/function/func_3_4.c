@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include<stdio.h>
 #include<string.h>
 #define MAXLINE 1000
@@ -7,7 +8,7 @@
 void itoa(uint32_t n,char s[]);
 void reverse1(char s[]);
 
-void returnval()
+void returnval0()
 {
     	uint32_t number;
     	char str[MAXLINE];
@@ -19,14 +20,14 @@ void returnval()
 
     	printf("Integer %d printed as\n String:",number);
 
-    	itoa(number,str);
+    	itoa0(number,str);
 
     	printf("%s",str);
 	printf("\n");
     
 }
 
-void itoa(uint32_t n,char s[])
+void itoa0(uint32_t n,char s[])
 {
     	uint32_t i,sign;
 
@@ -46,10 +47,10 @@ void itoa(uint32_t n,char s[])
 
     	s[i]='\0';
 
-    	reverse1(s);
+    	reverse10(s);
 }
 
-void reverse1(char s[])
+void reverse10(char s[])
 {
     	uint32_t c,i,j;
 

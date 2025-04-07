@@ -306,14 +306,13 @@ int main()
 						/* func_4_5.c */
 						printf("No function file for Question 5..\nExecute manually\n");
 						break;
-<<<<<<< HEAD
-=======
+
 					case 6:
 						/* func_4_6.c */
 						/* add commands for handling variables */
 						ExecuteCalculator();
 						break;
->>>>>>> origin/master
+
 					case 7:
 						/* func_4_7.c */
 						/* Write a routine ungets(s) that will push back an entire string onto the input. Should ungets know about buf and bufp, or should it just use ungetch? */
@@ -324,8 +323,7 @@ int main()
 						/* modified version of getch and ungetch functions */
 						modified_version();
 						break;
-<<<<<<< HEAD
-=======
+
 					case 9:
 						/* func_4_9.c */
 						/* to handle EOF perfectly */
@@ -346,7 +344,7 @@ int main()
 						/* recursive version of itoa */
 						ExecuteItoa();
 						break;
->>>>>>> origin/master
+
 					case 13:
 						/* func_4_13.c*/
 						/* Write a recursive version of the function reverse(s), which reverses the string s in place. */

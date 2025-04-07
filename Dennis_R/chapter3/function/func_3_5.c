@@ -1,4 +1,5 @@
 /* required header files */
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 #include "header.h"

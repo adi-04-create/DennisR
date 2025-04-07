@@ -1,5 +1,5 @@
 /* Modify getop so that it doesn't need to use ungetch. Hint: use an internal static variable.
-   Author: Bhavya Jyotishi
+   Author: Aditya Nathwani
    Cretaed: 01/03/2025
 */
 

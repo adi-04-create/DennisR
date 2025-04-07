@@ -4,8 +4,7 @@ Author: Aditya Nathwani
 created:3 jan 2025
 modified:3 jan 2025 */
 
-/* for (i=0; i < lim-1 && (c=getchar()) != '
-' && c != EOF; ++i) */
+/* for (i=0; i < lim-1 && (c=getchar()) != '\n' && c != EOF; ++i) */
 
 /* required header files */
 #include "header.h"

@@ -1,11 +1,3 @@
-/* Exercise 3-1. Our binary search makes two tests inside the loop, when one would suffice (at the price of more tests outside.) Write a version with only one test inside the loop and measure the difference in run-time.
- *
- * Author : Aditya Nathwani
- * Created : 2, February, 2025
- * Modified : 20, February, 2025
- */
-
-
 /* Required header files */
 #include <stdint.h>
 #include <stdio.h>
@@ -105,4 +97,10 @@ void array_search()
         printf("Value found at index: %u\n", result);
 
     free(arry); // Free allocated memory
+}
+
+int main()
+{
+	array_search();
+	return 0;
 }

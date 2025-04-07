@@ -9,7 +9,10 @@ void rightrot(uint32_t x,uint32_t inumber){
 	
         uint32_t variable1,variable2,variable3,variable;
         long long output;
+	/* creating a mask of desired numbers */
         mask= ((1<<inumber)-1) ;
+
+	
 	variable1= mask & x;
 	variable2= variable1 << (16 - inumber) ;
 	variable3= x >> inumber;
@@ -44,14 +47,15 @@ void right_rotate(){
 
         char input[32];
 
-        printf("enter the value of first binary string:");
+	char buff = getchar();
+        printf("enter the value of first binary string  : ");
         fgets(input,32,stdin);
         input1 = strtoul(input,NULL,2);
 
 
 
 
-        printf("\nenter the number you want to rotate right the bit string");
+        printf("\nenter the number you want to rotate right the bit string : ");
         scanf("%d",&inumber);
 
 

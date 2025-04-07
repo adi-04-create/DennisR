@@ -44,7 +44,7 @@ void location_return()
         }
         printf("enter string2:");
 
-	char buff2 = getchar();
+//	char buff2 = getchar();
         /* loop for getting the second string */
         while ((ch = getchar()) != EOF &&  ch != '\n')
         {
