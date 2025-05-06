@@ -82,12 +82,12 @@ int main() {
 	minprintf("Integer (%%d):\t\t\t%d\n", 10);
 	minprintf("Unsigned Integer (%%u):\t\t%u\n", 20);
 	minprintf("Float (%%f):\t\t\t%.2f\n", 3.14f);
-	minprintf("String (%%s):\t\t\t%s\n", "Hello");
+	minprintf("String (%%s):\t\t\t%s\n", "Hello1");
 	minprintf("Pointer (%%p):\t\t\t%p\n", (void *)0x123456);
-	minprintf("Character (%%c):\t\t\t%c\n", 'A');
+	minprintf("Character (%%c):\t\t\t%c\n",'A');
 	minprintf("Long Integer (%%ld):\t\t%ld\n", 1234567890L);
 	minprintf("Unsigned Long Integer (%%lu):\t%lu\n", 9876543210UL);
-	minprintf("Double (%%lf)\t\t\t%lf:\n", 2.71828);
+	minprintf("Double (%%lf):\t\t\t%lf\n", 211111111111.71828);
 
 	return 0;
 }

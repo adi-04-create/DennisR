@@ -1,5 +1,4 @@
 /* This is the CENTRAL FILE for all the functions being used in all the function files 
- * Author : Aditya Nathwani
  * Created : 4 February, 2025
  * Modified : 5 February, 2025
  */

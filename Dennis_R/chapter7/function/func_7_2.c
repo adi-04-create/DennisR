@@ -29,7 +29,7 @@ int main()
 {
 	char buffer[MAXLINE + 1];
 	int pos;
-	int c;
+	int ch;
 
 	while (1) 
 	{
@@ -45,16 +45,16 @@ int main()
 
 		for (int i = 0; buffer[i] != '\0'; ++i) 
 		{
-			c = buffer[i];
-			if (!isprint(c)) 
-			{
+			ch = buffer[i];
+			if (!isprint(ch)) 
+			
 				pos = inc(pos, HEXLEN + 7);
-				printf("[0x%02X|0%03o]", c, c);
+				printf("[0x%02X|0%03o]", ch, ch);
 			} 
 			else 
 			{
 				pos = inc(pos, 1);
-				putchar(c);
+				putchar(ch);
 			}
 		}
 
